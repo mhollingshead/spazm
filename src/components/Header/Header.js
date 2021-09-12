@@ -4,19 +4,22 @@ import UserProvider from '../../contexts/UserProvider';
 import logo from '../../logo.svg';
 import './Header.scss';
 
-export default function Header({ addStream }) {
+export default function Header({ addStream, toggleChatVisibility, toggleFollowingVisibility }) {
     const userData = useContext(UserProvider.context);
     const [dropdown, setDropdown] = useState(false);
+    const [settings, setSettings] = useState(false);
+    const [chatVisible, setChatVisible] = useState(true);
+    const [followingVisible, setFollowingVisible] = useState(true);
     const [results, setResults] = useState([]);
     const [qResults, setQResults] = useState([]);
     const [query, setQuery] = useState("");
 
-    const toggleDropdown = () => dropdown ? setDropdown(false) : setDropdown(true);
     const handleLogout = () => axios.get('/auth/logout').then(() => window.location.pathname = '/');
 
     const handleQuery = e => {
         setQuery(e.target.value);
         setDropdown(true);
+        setSettings(false);
         if (!userData.accessToken) return;
         if (e.target.value === "") {
             setResults([]);
@@ -46,6 +49,16 @@ export default function Header({ addStream }) {
         resetSearch();
     }
 
+    const handleChatToggle = () => {
+        chatVisible ? setChatVisible(false) : setChatVisible(true);
+        toggleChatVisibility();
+    }
+
+    const handleFollowingToggle = () => {
+        followingVisible ? setFollowingVisible(false) : setFollowingVisible(true);
+        toggleFollowingVisibility();
+    }
+
     return (
         <header className="header">
             <div className="header__logo">
@@ -66,7 +79,28 @@ export default function Header({ addStream }) {
                 </div>}
             </div>
             <div className="header__dashboard">
-                <p className="icon header__icon">settings</p>
+                <div className="header__settings">
+                    <p className="header__icon" onClick={() => setSettings(true)}>settings</p>
+                    {settings && <div className="dropdown">
+                        <div className="dropdown__ghost" onClick={() => setSettings(false)}></div>
+                        <div className="dropdown__body">
+                            <div className="dropdown__head">
+                                <h3 className="dropdown__title">Settings</h3>
+                                <button className="dropdown__button" onClick={() => setSettings(false)}>close</button>
+                            </div>
+                            <div className="dropdown__group">
+                                <p className="dropdown__label">Show Following Area</p>
+                                {followingVisible && <p className="dropdown__toggle dropdown__toggle--on" onClick={handleFollowingToggle}>toggle_on</p>}
+                                {!followingVisible && <p className="dropdown__toggle" onClick={handleFollowingToggle}>toggle_off</p>}
+                            </div>
+                            <div className="dropdown__group">
+                                <p className="dropdown__label">Show Chat Area</p>
+                                {chatVisible && <p className="dropdown__toggle dropdown__toggle--on" onClick={handleChatToggle}>toggle_on</p>}
+                                {!chatVisible && <p className="dropdown__toggle" onClick={handleChatToggle}>toggle_off</p>}
+                            </div>
+                        </div>
+                    </div>}
+                </div>
                 {userData.display_name && <div className="profile">
                     <div className="profile__panel">
                         <h3 className="profile__display-name">{userData.display_name}</h3>

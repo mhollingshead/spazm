@@ -7,6 +7,8 @@ export default function Streams() {
     const [streams, setStreams] = useState([]);
     const [chats, setChats] = useState([]);
     const [active, setActive] = useState(null);
+    const [chatVisibile, setChatVisible] = useState(true);
+    const [followingVisible, setFollowingVisible] = useState(true);
 
     const resize = () => {
         document.querySelectorAll('.stream').forEach(stream => {
@@ -46,6 +48,9 @@ export default function Streams() {
         setChats(_chats);
     }
 
+    const toggleChatVisibility = () => chatVisibile ? setChatVisible(false) : setChatVisible(true);
+    const toggleFollowingVisibility = () => followingVisible ? setFollowingVisible(false) : setFollowingVisible(true);
+
     useEffect(resize, [streams])
     useEffect(() => {
         if (!chats.find(chat => chat === active)) setActive(chats[0] || null);
@@ -53,8 +58,8 @@ export default function Streams() {
 
     return (
         <>
-            <Header addStream={addStream} />
-            <Following addStream={addStream} />
+            <Header addStream={addStream} toggleChatVisibility={toggleChatVisibility} toggleFollowingVisibility={toggleFollowingVisibility} />
+            {followingVisible && <Following addStream={addStream} />}
             <main className="streams">
                 <section className="viewers">
                     {streams.length === 0 && <div className="icon streams__icon">videocam_off</div>}
@@ -65,7 +70,7 @@ export default function Streams() {
                         </div>
                     ))}
                 </section>
-                {streams.length > 0 && <section className="chats">
+                {streams.length > 0 && chatVisibile && <section className="chats">
                     <ul className="chats__list">
                         {chats.map(user => (
                             <li className={`chats__item ${user === active ? "active" : ""}`} key={user} onClick={() => setActive(user)}>{user}</li>

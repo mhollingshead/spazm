@@ -22,6 +22,10 @@ spazm is perfect for viewing multiple perspectives of multiplayer servers / live
   
 Authenticated users can also see a list of their followed channels who are currently live and add streams directly from their **Following panel**. You can refresh your following list by clicking the *refresh button* or minimize the list to maximize stream sizes by clicking the *minus button* on the right.
 
+<div align="center"><img src="./public/spazm-ui-settings.png" width="205" /><p></p></div>   
+  
+By clicking on the **Settings** icon, users can customize their layout by toggling section visibilities.
+
 ## Install & Run Locally
 
 * Run `git clone https://github.com/mhollingshead/spazm.git` to clone the project directory, then run `cd ./spazm-main`. 

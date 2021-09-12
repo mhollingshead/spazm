@@ -4,6 +4,7 @@
     @include flex-vertical-center;
     justify-content: space-between;
     padding: 0.5rem 1rem;
+    background-color: white;
     border-bottom: 1px solid #dadada;
     min-height: 4rem;
 
@@ -52,13 +53,76 @@
             margin-left: 1rem;
         }
     }
+    &__settings {
+        height: 1.5rem;
+        position: relative;
+    }
     &__icon {
-        @include cta;
         @include icon;
+        @include cta;
         font-size: 1.5rem;
     }
     &__button {
         @include button;
+    }
+}
+
+.dropdown {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    &__ghost {
+        content: "";
+        display: block;
+        height: 2rem;
+        width: 2rem;
+        cursor: pointer;
+    }
+    &__body {
+        background-color: white;
+        border: 1px solid #dadada;
+        border-radius: 0.25rem;
+        padding: 0.5rem;
+    }
+    &__head {
+        @include flex-vertical-center;
+        justify-content: space-between;
+        padding-bottom: 0.5rem;
+    }
+    &__title {
+        font-weight: 700;
+        font-size: .9375rem;
+    }
+    &__button {
+        @include cta;
+        @include icon;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+    }
+    &__group {
+        @include flex-vertical-center;
+        justify-content: space-between;
+        width: 14rem;
+    }
+    &__label {
+        font-size: .9375rem;
+        color:rgb(100, 100, 100);
+    }
+    &__toggle {
+        @include icon;
+        cursor: pointer;
+        font-size: 1.75rem;
+
+        &--on {
+            color: #772Ce8;
+        }
     }
 }
 
