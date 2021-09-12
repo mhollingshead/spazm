@@ -1,0 +1,88 @@
+@use '../../partials/mixins' as *;
+
+.streams {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    display: flex;
+
+    &__icon {
+        font-size: 6rem;
+        color: #202020;
+    }
+}
+
+.viewers {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.chats {
+    width: 400px;
+    height: 100%;
+    background-color: white;
+    border-left: 1px solid #dadada;
+
+    &__list {
+        display: flex;
+        width: 100%;
+        list-style-type: none;
+    }
+    &__item {
+        padding: 0.5rem;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #dadada;
+        border-right: 1px solid #dadada;
+        background-color: #f6f6f6;
+        font-weight: 700;
+        height: 2.125rem;
+        display: block;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: .875rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:last-child {
+            border-right: none;
+        }
+        &.active {
+            background-color: white;
+            border-bottom: none;
+        }
+    }
+}
+
+.stream {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &__frame {
+        width: 100%;
+        height: 100%;
+    }
+    &__remove {
+        @include cta;
+        @include button;
+        position: absolute;
+        padding: 0.5rem;
+        top: 1rem;
+        right: 1rem;
+        background-color: #772Ce8;
+        color: white;
+    }
+}
+
+.chat {
+    width: 400px;
+    height: calc(100% - 2.125rem);
+}

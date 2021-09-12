@@ -1,0 +1,42 @@
+@mixin cta {
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s filter;
+
+    &:hover {
+        filter: brightness(0.8);
+    }
+}
+
+@mixin button {
+    @include cta;
+    background-color: #772Ce8;
+    color: white;
+    font-size: .875rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+@mixin inline-badge {
+    padding: 0.1rem 0.25rem;
+    border-radius: 0.25rem;
+    font-size: .75rem;
+    font-weight: 700;
+}
+
+@mixin icon {
+    font-family: 'Material Icons';
+    color: #aaaaaa;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-vertical-center {
+    display: flex;
+    align-items: center;
+}
