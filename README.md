@@ -11,15 +11,15 @@
 spazm is perfect for viewing multiple perspectives of multiplayer servers / livestream events or for just keeping up with several of your favorite streamers simultaneously.  Embedded streams and chats are automatically connected to your Twitch account *(whether logged in or not)*, so you can enjoy any follower / subscriber benefits through the spazm interface as well. 
 
 <div align="center"><img src="./public/spazm-ui-search-noauth.png" width="420" /></div>   
-
+  
 **Unauthenticated** users can use the search bar to add streams by typing in the channel name of the stream they'd like to add. 
 
 <div align="center"><img src="./public/spazm-ui-search-auth.png" width="420" /></div>   
-
+  
 **Authenticated** users can additionally search for streams, view search results automatically, and see which of the resulting users are currently live. 
 
 <div align="center"><img src="./public/spazm-ui-following.png" width="420" /></div>   
-
+  
 Authenticated users can also see a list of their followed channels who are currently live and add streams directly from their **Following panel**. You can refresh your following list by clicking the *refresh button* or minimize the list to maximize stream sizes by clicking the *minus button* on the right.
 
 ## Install & Run Locally
