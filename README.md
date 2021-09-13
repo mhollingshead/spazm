@@ -34,7 +34,7 @@ By clicking on the **Settings** icon, users can customize their layout by toggli
 
 * spazm uses the [Twitch API](https://dev.twitch.tv/docs/api) to make requests and authenticate users. This means that in order to run locally, you'll need to register a new application in your [Twitch Developer Console](https://dev.twitch.tv/). 
 
-* Once you've registered your application, navigate to the **Manage Application** page. In the **OAuth Redirect URLs** section, add `http://localhost:3000/auth/twitch/callback`. You'll also want to make a note of your `Client ID` and `Client Secret`. 
+* Once you've registered your application, navigate to the **Manage Application** page. In the **OAuth Redirect URLs** section, add `http://localhost:8080/auth/twitch/callback`. You'll also want to make a note of your `Client ID` and `Client Secret`. 
 
 	*Your client ID and secret should always remain private, **do not share these values with anybody**.*
 
